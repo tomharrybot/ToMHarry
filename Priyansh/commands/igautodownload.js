@@ -1,65 +1,35 @@
-const { downloadVideo } = require('priyansh-all-dl');
-const axios = require("axios");
-const fs = require("fs-extra");
-const tempy = require('tempy');
-
 module.exports.config = {
-    name: "igautodownload",
-    version: "1.0.0",
-    hasPermssion: 0,
-    credits: "Priyansh Rajput",
-    description: "Downloads Instagram video from HD link provided",
-    commandCategory: "utility",
-    usages: "[Instagram video URL]",
-    cooldowns: 5,
-    dependencies: {
-        "priyansh-all-dl": "latest",
-        "axios": "0.21.1",
-        "fs-extra": "10.0.0",
-        "tempy": "0.4.0"
-    }
+    name: "botname",
+    version: "1.0.4",
+    hasPermssion: 1,
+    creditss: "jordanofficial",
+    description: "Automatically prevent change bot nickname",
+    commandCategory: "owner",
+    usages: "",
+    cooldowns: 5
 };
 
-module.exports.handleEvent = async function({ api, event }) {
-            if (event.type === "message" && event.body) {
-                if (event.body.startsWith("https://www.instagram.com/share/") || event.body.startsWith("https://www.instagram.com/reel/")) {
-            try {
 
-            const videoInfo = await downloadVideo(event.body);
-            const hdLink = videoInfo.video;
-            const response = await axios.get(hdLink, { responseType: 'stream' });
-            const tempFilePath = tempy.file({ extension: 'mp4' });
-            const writer = fs.createWriteStream(tempFilePath);
-            response.data.pipe(writer);
-
-            writer.on('finish', async () => {
-                const attachment = fs.createReadStream(tempFilePath);
-                await api.sendMessage({
-                    attachment,
-                    body: "Here's the video you requested:"
-                }, event.threadID, (err) => {
-                    if (err) console.error("Error sending message:", err);
-                });
-                fs.unlinkSync(tempFilePath);
-
-            });
-
-            writer.on('error', (err) => {
-                console.error("Error writing file:", err);
-                api.sendMessage("An error occurred while processing the video. Please try again later.", event.threadID, event.messageID);
-            });
-        } catch (error) {
-            console.error('Error downloading Instagram video:', error);
-            api.sendMessage("An error occurred while downloading the Instagram video. Please try again later.", event.threadID, event.messageID);
-        }
+module.exports.handleEvent = async function ({ api, args, event, client, __GLOBAL, Threads, Currencies }) {
+    const { threadID } = event;
+    let { nicknames } = await api.getThreadInfo(event.threadID)
+    const nameBot = nicknames[api.getCurrentUserID()]
+    if (nameBot !== `[ ${config.PREFIX} ] • ${config.BOTNAME}`) {
+        api.changeNickname(`[ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "Made by CatalizCS and SpermLord" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
+        setTimeout(() => {
+            return api.sendMessage(`BoT Ka NaMe ChanGe KRrny Ki Permission  OnLy Onwer ☆ AMIR ☆ Ke PaSs Hai 🤞😎`, threadID);
+        }, 1500);
     }
 }
-};
 
-module.exports.run = async function ({ api, event }) {
-  return api.sendMessage(
-    `This command does not support direct execution.`,
-    event.threadID,
-    event.messageID,
-  );
-};
+module.exports.run = async({ api, event, Threads}) => {
+    let data = (await Threads.getData(event.threadID)).data || {};
+    if (typeof data["cnamebot"] == "undefined" || data["cnamebot"] == false) data["cnamebot"] = true;
+    else data["cnamebot"] = false;
+    
+    await Threads.setData(event.threadID, { data });
+    global.data.threadData.set(parseInt(event.threadID), data);
+    
+    return api.sendMessage(`✅ ${(data["cnamebot"] == true) ? "Turn on" : "Turn off"} successfully cnamebot!`, event.threadID);
+
+}

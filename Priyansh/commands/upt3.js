@@ -23,8 +23,9 @@ const time = process.uptime(),
 		seconds = Math.floor(time % 60);
 const moment = require("moment-timezone");
 var juswa = moment.tz("Asia/karachi").format("『D/MM/YYYY』 【hh:mm:ss】");
+var juswa2 = moment.tz("Asia/karachi").format("『D/MM/YYYY』");
 var link = ["https://i.imgur.com/VLRAV5Z.jpeg"];
-var callback = () => api.sendMessage({body:`╭─────𝐔𝐩𝐓𝐢𝐌𝐞────♥︎╮\n ➳ 𝐑𝐔𝐍 ✦ ${hours}н ${minutes}м ${seconds}ѕ\n ➳ 𝐓𝐢𝐌𝐞 ✦ ${juswa}
+var callback = () => api.sendMessage({body:`╭────𝐔𝐩𝐓𝐢𝐌𝐞────♥︎╮\n ➳ 𝐑𝐔𝐍 ✦ ${hours}н ${minutes}м ${seconds}ѕ\n ➳ 𝐓𝐢𝐌𝐞 ✦ ${juswa}\n➳ 𝐃𝐚𝐓𝐞 ✦ ${juswa2}
 ╰♥︎─────────────╯\n\n ➥ 𝐁𝐨𝐓 𝐎𝐰𝐧𝐞𝐫 ➠: \n┏━━━━ 🖤 ━━━━┓
     ✦❥⋆⃝𝗔𝗠𝗜𝗥 ✦ 
 ┗━━━    🖤 ━━━━┛`,attachment: fs.createReadStream(__dirname + "/cache/juswa.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/juswa.jpg")); 

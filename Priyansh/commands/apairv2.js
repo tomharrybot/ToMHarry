@@ -77,5 +77,5 @@ module.exports. run = async function({ api, event, args, Users, Threads, Currenc
         var sex = await data[id].gender;
         var gender = sex == 2 ? "Male🧑" : sex == 1 ? "Female👩‍  " : "Tran Duc Bo";
 var one = senderID, two = id;
-    return makeImage({ one, two }).then(path => api.sendMessage({ body: `☆ 𝐌𝐞𝐊𝐨 𝐘𝐞 𝐁𝐞𝐬𝐓 𝐋𝐚𝐠𝐓𝐚 𝐇𝐚𝐢 ☆‎\n\n●●●━━━━━◥💜◤━━━━━●●●\n ✦${namee} 💓 ${name}✦\n●●●━━━━━◥💜◤━━━━━●●●\n\n➺ 💜: 〘 ${tle} 〙 🙈🙉🙊 ❥||ㅎ\n\n☆ 𝗖𝗿𝗲𝗱𝗶𝘁'𝘀 ☆ ✦❥⋆⃝𝗝𝗢𝗥𝗗𝗔𝗡 ✦\n`, mentions: arraytag, attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
+    return makeImage({ one, two }).then(path => api.sendMessage({ body: `☆ 𝐌𝐞𝐊𝐨 𝐘𝐞 𝐁𝐞𝐬𝐓 𝐋𝐚𝐠𝐓𝐚 𝐇𝐚𝐢 ☆‎\n\n●●●━━━━━◥💜◤━━━━━●●●\n ✦${namee} 💓 ${name}✦\n●●●━━━━━◥💜◤━━━━━●●●\n\n➺ 💜: 〘 ${tle} 〙 🙈🙉🙊 ❥||ㅎ\n\n☆ 𝗖𝗿𝗲𝗱𝗶𝘁'𝘀 ☆ ✦❥⋆⃝𝐀𝐌𝐢𝐑 ✦\n`, mentions: arraytag, attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
 }

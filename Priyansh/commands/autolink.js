@@ -59,7 +59,7 @@ module.exports.downLoad = async function (url, type, api, event) {
     api.sendMessage({ attachment: fs.createReadStream(path) }, event.threadID, () => fs.unlinkSync(path), event.messageID);
   } catch (err) {
     console.log(err);
-    api.sendMessage("❌ Failed to download media. API might be down or link invalid.", event.threadID, event.messageID);
+    api.sendMessage("❌ 𝐌𝐞𝐃𝐢𝐚 𝐍𝐨𝐓 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐏𝐥𝐞𝐚𝐒𝐞 𝐓𝐑𝐲 𝐀𝐠𝐚𝐢𝐧.", event.threadID, event.messageID);
   }
 };
 

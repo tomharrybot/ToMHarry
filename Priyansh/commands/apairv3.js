@@ -101,7 +101,7 @@ module.exports.run = async function ({ args, Users, Threads, api, event, Currenc
   fs.writeFileSync(pathImg, imageBuffer);
   fs.removeSync(pathAvt1);
   fs.removeSync(pathAvt2);
-  return api.sendMessage({ body: `☆ 𝐌𝐞𝐊𝐨 𝐘𝐞 𝐁𝐞𝐬𝐓 𝐋𝐚𝐠𝐓𝐚 𝐇𝐚𝐢 ☆\n\n●●●━━━━━◥💜◤━━━━━●●●\n ✦${name1} 💟 ${name2}✦\n●●●━━━━━◥💜◤━━━━━●●●\n\n➺ 💜: 〘 ${tile}% 〙 🙈🙉🙊 ❥||ㅎ\n\n☆ 𝗖𝗿𝗲𝗱𝗶𝘁'𝘀 ☆ ✦❥⋆⃝𝗝𝗢𝗥𝗗𝗔𝗡 ✦\n`,
+  return api.sendMessage({ body: `☆ 𝐌𝐞𝐊𝐨 𝐘𝐞 𝐁𝐞𝐬𝐓 𝐋𝐚𝐠𝐓𝐚 𝐇𝐚𝐢 ☆\n\n●●●━━━━━◥💜◤━━━━━●●●\n ✦${name1} 💟 ${name2}✦\n●●●━━━━━◥💜◤━━━━━●●●\n\n➺ 💜: 〘 ${tile}% 〙 🙈🙉🙊 ❥||ㅎ\n\n☆ 𝗖𝗿𝗲𝗱𝗶𝘁'𝘀 ☆ ✦❥⋆⃝𝐀𝐌𝐢𝐑 ✦\n`,
             mentions: [{
           tag: `${name2}`,
           id: id2
